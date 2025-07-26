@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: false  # 禁用子模块检查
 
@@ -20,32 +20,11 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Install Hexo Git Deployer
+      - name: Install and build
         run: |
-          npm install hexo-deployer-git --save
-          npm install hexo-cli -g
+            npm install
+            npm run build
 
-      - name: Clean and Generate Static Files for Theme A
-        run: |
-          hexo clean
-          hexo generate
-
-      - name: Generate Static Files for Theme B
-        run: |
-          cd hexoB
-          npm install
-          npm install hexo-deployer-git --save
-          npm install hexo-cli -g
-          hexo clean
-          hexo generate
-          cd ..
-
-      - name: Move Theme B Output to Gallery
-        run: |
-          mv hexoB/public public/gallery
 
       - name: Configure Git
         run: |
