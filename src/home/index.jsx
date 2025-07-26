@@ -4,9 +4,9 @@ import CodeMirror from '@uiw/react-codemirror'
 import { oneDark } from '@codemirror/theme-one-dark'
 import {AppstoreFilled, CopyFilled, MinusCircleFilled, StarFilled} from "@ant-design/icons";
 import classNames from 'classnames'
-import {If, Else, Then} from 'react-if';
+import {If, Then} from 'react-if';
 import AllTxtures from './components/allTxtures'
-import { useCallback, useState, createRef  } from 'react'
+import { useState, useCallback } from 'react'
 import { EditorView, Decoration } from '@codemirror/view';
 import { RangeSetBuilder } from '@codemirror/state';
 
