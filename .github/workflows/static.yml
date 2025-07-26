@@ -32,14 +32,9 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Deploy to GitHub Pages
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          cd public/
-          git init
-          git add -A
-          git commit -m "Create by workflows"
-      
-          git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/wrs123/ow-magic-text.git
-          git push origin HEAD:gh-pages -f
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用自动生成的token
+            publish_dir: ./build
+
 
